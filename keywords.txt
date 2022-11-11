@@ -16,7 +16,10 @@ as
 for
 in
 continue
-
+def
+return
+None
+global
 
 
 
