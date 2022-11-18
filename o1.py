@@ -1,6 +1,7 @@
 import pygame as pg
 import sys
 pg.init()
+clock = pg.time.Clock()
 
 en , boy = 800 , 600
 siyah =  0 , 0 , 0 # RGB 0- 255
@@ -15,3 +16,4 @@ while True:
     ekran.fill(siyah)
     pg.draw.circle(ekran,beyaz,( en//2 , boy //2  ),20)
     pg.display.flip()
+    clock.tick(30)
