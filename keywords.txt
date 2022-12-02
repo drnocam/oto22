@@ -21,6 +21,7 @@ return
 None
 global
 from
+del
 
 
 
