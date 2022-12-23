@@ -22,6 +22,11 @@ None
 global
 from
 del
+class
+self
+try
+except
+finally
 
 
 
