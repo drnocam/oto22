@@ -31,14 +31,37 @@ while True:
         if event.type == pg.MOUSEBUTTONDOWN :
             mx, my = pg.mouse.get_pos()
             mouse_index =  mx //40 + (my // 40 )*20
+            karolar.append([ mouse_index, 1])
         if event.type == pg.QUIT :
             sys.exit();
     ekran.fill(gri)
 
-    for cord in karolar:
-        x , y = kordinat_hesapla( cord[0] )
-        pg.draw.rect(ekran,sari,(x , y,karo_en,karo_boy) )
+    for ind in range(len(karolar)):
+        
+        sol = sag = alt = 0
+        for ind2 in range(len(karolar)):
+            if ind == ind2 :
+                # mevcut karo ise bakma.
+                continue
+            if karolar[ind2][0] == karolar[ind][0] +  en // karo_en :
+                #altı dolu
+                alt = 1
+            elif karolar[ind2][0] == karolar[ind][0] +  en // karo_en -1 :
+                #sol aşağı dolu
+                sol = 1
+            elif karolar[ind2][0] == karolar[ind][0] +  en // karo_en + 1 :
+                #sağ aşağı dolu..
+                sag = 1
 
+        if karolar[ind][0] <  (en // karo_en) * (boy // karo_boy -1)  :
+            if(alt==0) :
+                karolar[ind][0] +=  en // karo_en 
+            elif sol==0 :
+                karolar[ind][0] =  karolar[ind][0] +  en // karo_en -1
+            elif sag == 0:
+                karolar[ind][0] +=  en // karo_en + 1 
+        x , y = kordinat_hesapla( karolar[ind][0] )
+        pg.draw.rect(ekran,sari,(x , y,karo_en,karo_boy) )
 
     pg.display.flip()
     clock.tick(10)
